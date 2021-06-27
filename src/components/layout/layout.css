@@ -1,0 +1,13 @@
+header {
+    height: 70px;
+}
+
+nav {
+    height: 70px;
+}
+
+.indicator {
+    position: absolute;
+    top: 0;
+    right: 2px;
+}
