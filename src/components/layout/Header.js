@@ -15,29 +15,29 @@ const Header = ({dispatch, auth}) => {
     const handleClickAvatar = () => setShowAvatarDropdown(!isShowAvatarDropdown);
 
     useEffect(() => {
-       dispatch(getCredential());
+        dispatch(getCredential());
     }, [dispatch]);
 
     return (
-        <div className="max-w-full min-w-max">
+        <div className="fixed w-full ml-0 mr-0 max-w-full min-w-max">
             <header className="flex bg-white border-b shadow">
                 <div className="container mx-auto">
                     <div className="flex items-center h-full ml-10 mr-10">
-                        <Link className="whitespace-nowrap" to="/">TEST MAKER</Link>
+                        <Link className="whitespace-nowrap font-bold" to="/">TEST MAKER</Link>
                         <form className="flex items-center ml-14 mr-5">
                             <div className="flex items-center border-b-2 border-purple-600">
-                                    <Icon className="mx-auto border-none flex items-center"
-                                          icon={bxSearch}
-                                          color="#6E6B7B"
-                                          height="20px"
-                                          width="20px"/>
+                                <Icon className="mx-auto border-none flex items-center"
+                                      icon={bxSearch}
+                                      color="#6E6B7B"
+                                      height="20px"
+                                      width="20px"/>
 
-                                    <input
-                                        className="outline-none"
-                                        type="text"
-                                        id="fast-search"
-                                        name="fast-search"
-                                        placeholder="Search Here..." />
+                                <input
+                                    className="outline-none"
+                                    type="text"
+                                    id="fast-search"
+                                    name="fast-search"
+                                    placeholder="Search Here..."/>
                             </div>
                         </form>
                         <ul className="flex items-center ml-auto space-x-5">
@@ -46,31 +46,33 @@ const Header = ({dispatch, auth}) => {
                                       to="/">
                                     <Icon icon={bxBell}
                                           color="#6E6B7B"
-                                          width="22px"
-                                          height="25.14px" />
+                                          width="26.4px"
+                                          height="30.168px"/>
                                     <span className="flex">
-                                        <span className="animate-ping absolute top-1 right-1 inline-flex rounded-full w-2 h-2 bg-pink-500"/>
-                                        <span className="absolute top-1 right-1 inline-flex rounded-full w-2 h-2 bg-pink-600"/>
+                                        <span
+                                            className="animate-ping absolute top-1 right-1 inline-flex rounded-full w-2 h-2 bg-pink-500"/>
+                                        <span
+                                            className="absolute top-1 right-1 inline-flex rounded-full w-2 h-2 bg-pink-600"/>
                                     </span>
                                 </Link>
                             </li>
                             <li className="relative">
                                 <div className="flex items-center space-x-3">
                                     <Link to="/">
-                                        <span className="">{auth.username}</span>
+                                        <span className="whitespace-nowrap">{auth.username}</span>
                                         <div className="flex items-center justify-end space-x-1.5">
-                                            <span>Student</span>
+                                            <span>{auth.role}</span>
                                         </div>
                                     </Link>
-                                    <div className="relative inline-block text-left object-contain h-8 w-8">
-                                        <button className="block text-left w-full"
+                                    <div className="relative inline-block text-left object-contain h-9 w-9">
+                                        <button className="block text-left w-screen"
                                                 type="button"
                                                 onClick={handleClickAvatar}>
-                                            <img className="rounded-full h-8 w-8"
+                                            <img className="rounded-full h-9 w-9"
                                                  src={'images/dat-tran.jpg'}
-                                                 alt="Dat Tran" />
+                                                 alt="Dat Tran"/>
                                             <div className="absolute bottom-0 right-0">
-                                                <div className="rounded-full w-2 h-2 bg-green-500" />
+                                                <div className="rounded-full w-2 h-2 bg-green-500"/>
                                             </div>
                                         </button>
                                         {isShowAvatarDropdown && (
@@ -118,7 +120,7 @@ const Header = ({dispatch, auth}) => {
                                 return (
                                     <NavItem key={index}
                                              name={value.name}
-                                             to={value.to} />
+                                             to={value.to}/>
                                 );
                             }
                             return (
@@ -126,7 +128,7 @@ const Header = ({dispatch, auth}) => {
                                              name={value.name}
                                              to={value.to}
                                              icon={value.icon}
-                                             childen={value._children} />
+                                             childen={value._children}/>
                             );
 
                         })}

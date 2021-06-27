@@ -22,7 +22,7 @@ const QuestionCard = props => {
     return (
         <>
             <div
-                className={`${getCardColor()} ml-8 mr-8 bg-gray-50 border-l-8 text-gray-500 shadow-lg rounded-lg py-3`}>
+                className={`${getCardColor()} border ml-8 mr-8 bg-gray-50 border-l-8 text-gray-500 shadow-lg rounded-lg py-3`}>
                 <div className="flex justify-between ml-5 mr-5">
                     <div>
                         <span>{question.title}</span>

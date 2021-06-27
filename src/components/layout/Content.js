@@ -14,7 +14,7 @@ const Content = () => {
 
     return (
         <>
-            <div className="container sm:mx-auto max-w-6xl min-w-max my-10">
+            <div className="sm:mx-auto min-w-max mt-44 mb-10 w-full">
                 <Switch>
                     {routes.map((route, id) => {
                         return route.component && checkAuthentication() && (
