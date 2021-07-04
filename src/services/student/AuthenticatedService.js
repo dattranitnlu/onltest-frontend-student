@@ -1,8 +1,6 @@
-import {GeneralService} from "../GeneralService";
-import {RootAPI} from "../../config/api.config";
+import GeneralService from "../GeneralService";
+import baseURL from "../../config/api.config";
 
-export const AuthenticatedService = {
-    async login({username, password}) {
-        return await GeneralService.post(`${RootAPI.STUDENT}/login`, {username, password});
-    }
+export const login = ({username, password}) => {
+    return GeneralService.post(`${baseURL}/login`, {username, password});
 }

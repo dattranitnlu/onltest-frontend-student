@@ -1,69 +1,36 @@
 import axios from "axios";
-import {customApiError} from "../utils/helpers/customApiError";
+import baseURL from "../config/api.config";
+import {getToken} from "../utils/helpers/authUtils";
+import {omit} from "lodash";
 
-export const GeneralService = {
-    async get(url, params = {}) {
-        try {
-            const config = setConfig(params);
-            const resp = await axios.get(url, config);
-            return resp.data
-        } catch (error) {
-            return customApiError(error.errors.code, error.errors.message);
-        }
-    },
-    async post(url, data) {
-        try {
-            const config = setConfig({});
-            const resp = await axios.post(url, data, config);
-            return resp.data;
-        } catch (error) {
-            return customApiError(error.errors.code, error.errors.message);
-        }
-    },
-    async put(url, data) {
-        try {
-            const config = setConfig({});
-            const resp = await axios.put(url, data, config);
-            return resp.data;
-        } catch (error) {
-            return customApiError(error.errors.code, error.errors.message);
-        }
-    },
-    async delete(url) {
-        try {
-            const config = setConfig({});
-            const resp = await axios.delete(url, config);
-            return resp.data;
-        } catch (error) {
-            return customApiError(error.errors.code, error.errors.message);
-        }
-    },
-    async patch(url, data) {
-        try {
-            const config = setConfig({});
-            const resp = await axios.patch(url, data, config);
-            return resp.data;
-        } catch (error) {
-            return customApiError(error.errors.code, error.errors.message);
-        }
+const accessToken = getToken();
+
+const instance = axios.create({
+    baseURL: baseURL,
+    headers: {
+        'Authorization': `Bearer ${accessToken}`,
     }
-}
+});
 
-function setConfig(params = {}) {
-    const token = localStorage.getItem('token');
-    let config = {
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json; charset=utf-8'
-        }
+instance.interceptors.request.use(requestConfig => {
+    let configOverride = requestConfig;
+    if (requestConfig.url === '/login') {
+        configOverride = omit(requestConfig, 'headers.Authorization');
+    } else if (requestConfig.url === '/404') {
+        configOverride = omit(requestConfig, 'headers.Authorization');
+    } else if (requestConfig.url === '/500') {
+        configOverride = omit(requestConfig, 'headers.Authorization');
     }
 
-    if(params && typeof params === 'object' && params !== {}) {
-        config = {
-            ...config,
-            params: params
-        }
-    }
+    return configOverride;
+});
 
-    return config;
-}
+instance.interceptors.response.use(response => {
+        return Promise.resolve(response);
+    },
+    error => {
+        return Promise.reject(error);
+    }
+);
+
+export default instance;

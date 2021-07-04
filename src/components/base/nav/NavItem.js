@@ -7,11 +7,11 @@ const NavItem = (props) => {
         id,
         name,
         to,
-        icon
+        icon = undefined
     } = props;
 
     return (
-        <li>
+        <li id={id}>
             <div className="relative inline-block text-left">
                 <div>
                     <Link id={id}

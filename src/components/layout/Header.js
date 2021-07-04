@@ -1,6 +1,5 @@
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {connect} from 'react-redux';
 
 import Icon from '@iconify/react';
 import bxBell from '@iconify/icons-bx/bx-bell';
@@ -8,15 +7,26 @@ import bxSearch from '@iconify/icons-bx/bx-search';
 
 import {NavItem, NavDropdown} from "../base/nav";
 import nav from "../_nav";
-import {getCredential} from "../../redux/actions/auth.actions";
+import {useCookies} from "react-cookie";
+import {useDispatch} from "react-redux";
+import {logoutRequest} from "../../redux/user/actions/auth.actions";
 
-const Header = ({dispatch, auth}) => {
+const Header = () => {
+    const dispatch = useDispatch();
     const [isShowAvatarDropdown, setShowAvatarDropdown] = useState(false);
-    const handleClickAvatar = () => setShowAvatarDropdown(!isShowAvatarDropdown);
+    const [cookies] = useCookies(['user_info']);
+    const [user, setUser] = useState({username: '', role: ''});
 
     useEffect(() => {
-        dispatch(getCredential());
-    }, [dispatch]);
+        const userInfo = cookies['user_info'];
+        if(userInfo) {
+            setUser(userInfo);
+        }
+    }, [cookies]);
+
+    const handleClickAvatar = () => setShowAvatarDropdown(!isShowAvatarDropdown);
+
+    const handleLogout = () => dispatch(logoutRequest());
 
     return (
         <div className="fixed w-full ml-0 mr-0 max-w-full min-w-max">
@@ -58,10 +68,10 @@ const Header = ({dispatch, auth}) => {
                             </li>
                             <li className="relative">
                                 <div className="flex items-center space-x-3">
-                                    <Link to="/">
-                                        <span className="whitespace-nowrap">{auth.username}</span>
+                                    <Link to="#">
+                                        <span className="whitespace-nowrap">{user.username}</span>
                                         <div className="flex items-center justify-end space-x-1.5">
-                                            <span>{auth.role}</span>
+                                            <span>{user.role}</span>
                                         </div>
                                     </Link>
                                     <div className="relative inline-block text-left object-contain h-9 w-9">
@@ -96,11 +106,11 @@ const Header = ({dispatch, auth}) => {
                                                         Password</Link>
                                                 </div>
                                                 <div className="py-1" role="none">
-                                                    <Link className="text-gray-700 block px-4 py-2 text-sm"
+                                                    <button className="text-gray-700 block px-4 py-2 text-sm focus:outline-none"
                                                           role="menuitem"
                                                           tabIndex="-1"
                                                           id="menu-item-3"
-                                                          to="/login">Logout</Link>
+                                                          onClick={handleLogout}>Logout</button>
                                                 </div>
                                             </div>
                                         )}
@@ -140,8 +150,5 @@ const Header = ({dispatch, auth}) => {
     );
 }
 
-const mapStateToProps = (state) => ({
-    auth: state.auth
-})
 
-export default connect(mapStateToProps)(Header);
+export default Header;
