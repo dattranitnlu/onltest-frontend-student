@@ -1,5 +1,9 @@
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
+import {useCookies} from "react-cookie";
+import {useDispatch} from "react-redux";
+import {logoutRequest} from "../../redux/user/actions/auth.actions";
+import {replace, capitalize} from 'lodash';
 
 import Icon from '@iconify/react';
 import bxBell from '@iconify/icons-bx/bx-bell';
@@ -7,9 +11,6 @@ import bxSearch from '@iconify/icons-bx/bx-search';
 
 import {NavItem, NavDropdown} from "../base/nav";
 import nav from "../_nav";
-import {useCookies} from "react-cookie";
-import {useDispatch} from "react-redux";
-import {logoutRequest} from "../../redux/user/actions/auth.actions";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -18,9 +19,10 @@ const Header = () => {
     const [user, setUser] = useState({username: '', role: ''});
 
     useEffect(() => {
-        const userInfo = cookies['user_info'];
-        if(userInfo) {
-            setUser(userInfo);
+        const {username, roles = []} = cookies['user_info'];
+        const roleName = capitalize(replace(roles[0].name, 'ROLE_', ''));
+        if(username && roles) {
+            setUser({username, role: roleName});
         }
     }, [cookies]);
 

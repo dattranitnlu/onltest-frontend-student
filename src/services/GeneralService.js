@@ -14,7 +14,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(requestConfig => {
     let configOverride = requestConfig;
-    if (requestConfig.url === '/login') {
+    if (requestConfig.url === '/login/*') {
         configOverride = omit(requestConfig, 'headers.Authorization');
     } else if (requestConfig.url === '/404') {
         configOverride = omit(requestConfig, 'headers.Authorization');
