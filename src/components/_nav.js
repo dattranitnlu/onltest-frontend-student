@@ -1,16 +1,16 @@
 import bxChevronDown from "@iconify/icons-bx/bx-chevron-down";
 
 const nav = [
-    {
-        _tag: 'NavItem',
-        name: 'LOGIN',
-        to: '/login',
-        icon: bxChevronDown
-    },
+    // {
+    //     _tag: 'NavItem',
+    //     name: 'LOGIN',
+    //     to: '/login',
+    //     icon: bxChevronDown
+    // },
     {
         _tag: 'NavItem',
         name: 'Exam Detail Page',
-        to: '/exam-detail'
+        to: '/exam-details'
     },
     {
         _tag: 'NavDropdown',

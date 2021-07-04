@@ -7,7 +7,7 @@ const ExamDetail = lazy(() => import('../views/exam-details').then(ExamDetail =>
 
 export const RootPath = {
     PAGE_LOGIN: `/login`,
-    EXAM_DETAILS: '/exam-detail',
+    EXAM_DETAILS: '/exam-details',
     PAGE_404: '/404',
     PAGE_500: '/500'
 }
@@ -18,7 +18,7 @@ const routes = [
         component: Login,
         exact: true,
         name: 'Exam',
-        isPrivate: true
+        isPrivate: false
     },
     {
         path: RootPath.EXAM_DETAILS,

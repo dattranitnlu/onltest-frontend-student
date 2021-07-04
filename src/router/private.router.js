@@ -1,22 +1,33 @@
-import { Redirect, Route } from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
+import PropTypes from "prop-types";
+import Login from "../views/login";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-    // const accessToken = localStorage.getItem("token");
-    const accessToken = "Your account was signed in!";
-
-    if (!accessToken) {
-        return <Redirect to="/login" />;
-    }
-
+const PrivateRoute = ({component: Component, path, isAuthenticated, ...rest}) => {
     return (
         <Route
             {...rest}
             key="route"
-            render={(props) => {
-                return <Component {...props} />;
-            }}
-        />
+            path={path}
+            render={(props) => isAuthenticated ? (
+                <Component {...props} />
+            ) : (
+                <Redirect
+                    to={{ pathname: '/login', state: { from: props.location } }}
+                />
+            )
+            }/>
     );
 };
 
+PrivateRoute.propTypes = {
+    path: PropTypes.string,
+    isAuthenticated: PropTypes.bool,
+    component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+}
+
+PrivateRoute.defaultProps = {
+    path: '/',
+    isAuthenticated: false,
+    component: <Login/>
+}
 export default PrivateRoute;

@@ -7,11 +7,11 @@ import PropTypes from "prop-types";
 
 const NavDropdown = (props) => {
     const {
-        key,
+        id,
         name,
         to,
         icon,
-        childen
+        children
     } = props;
 
     const [isShow, setShow] = useState(false);
@@ -20,7 +20,7 @@ const NavDropdown = (props) => {
 
     return (
         <>
-            <li key={key}>
+            <li id={id}>
                 <div className="relative inline-block text-left">
                     <div>
                         <Link
@@ -35,7 +35,7 @@ const NavDropdown = (props) => {
                         </Link>
                     </div>
 
-                    {isShow && childen != null && (
+                    {isShow && children != null && (
                         <div
                             className="origin-top-right absolute left-0 mt-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                             role="menu"
@@ -43,7 +43,7 @@ const NavDropdown = (props) => {
                             aria-labelledby="menu-button"
                             tabIndex="-1">
                             <div className="py-1" role="none">
-                                {childen.map((value, index) => {
+                                {children.map((value, index) => {
                                     if (value._tag === 'NavItem') {
                                         return (
                                             <NavItem key={index}
@@ -72,7 +72,7 @@ NavDropdown.propTypes = {
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     name: PropTypes.string,
     to: PropTypes.string,
-    icon: PropTypes.element,
+    icon: PropTypes.oneOfType([PropTypes.object, PropTypes.element]),
     children: PropTypes.array
 }
 

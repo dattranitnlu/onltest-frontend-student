@@ -1,19 +1,20 @@
-import {Suspense} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import Login from './login';
-import {Layout} from "../components/layout";
+import {Route, Switch} from 'react-router-dom';
+import Boot from '../redux/boot';
+import AppProvider from "./AppProvider";
+import AppRoute from "./AppRoute";
 
 const App = () => {
     return (
-        <BrowserRouter>
-            <Suspense fallback={null}>
-                <Switch>
-                    <Route path="/login" name="Login Page" render={props => <Login {...props} />}/>
-                    <Route path="/" name="Home Page" render={props => <Layout {...props} />}/>
-                </Switch>
-            </Suspense>
-        </BrowserRouter>
+        <AppProvider>
+            <Switch>
+                <Route path="/">
+                    <AppRoute/>
+                </Route>
+            </Switch>
+        </AppProvider>
     );
 };
+
+Boot().then(() => App()).catch((error) => console.error(error));
 
 export default App;
