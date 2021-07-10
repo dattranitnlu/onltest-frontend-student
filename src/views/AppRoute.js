@@ -7,7 +7,7 @@ import {Layout} from "../components/layout";
 import Login from "./login";
 import {checkAuthorization} from "../redux/user/actions/auth.actions";
 
-const AppRoute = withRouter(() => {
+const AppRoute = () => {
     const dispatch = useDispatch();
     const token = useSelector(state => state?.auth.token);
     const [isLoggedIn, setLoggedIn] = useState(false);
@@ -23,15 +23,15 @@ const AppRoute = withRouter(() => {
 
     return (
         <Suspense fallback={null}>
-        <Switch>
-            <Route path={`/login`}
-                   component={props => <Login {...props}/>} />
-            <PrivateRoute path={`/`}
-                          isAuthenticated={isLoggedIn}
-                          component={props => <Layout {...props}/>}/>
-        </Switch>
+            <Switch>
+                <Route path={`/login`}
+                       component={props => <Login {...props}/>} />
+                <PrivateRoute path={`/`}
+                              isAuthenticated={isLoggedIn}
+                              component={props => <Layout {...props}/>}/>
+            </Switch>
         </Suspense>
     );
-});
+};
 
-export default AppRoute;
+export default withRouter(AppRoute);

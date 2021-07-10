@@ -19,10 +19,13 @@ const Header = () => {
     const [user, setUser] = useState({username: '', role: ''});
 
     useEffect(() => {
-        const {username, roles = []} = cookies['user_info'];
-        const roleName = capitalize(replace(roles[0].name, 'ROLE_', ''));
-        if(username && roles) {
-            setUser({username, role: roleName});
+        const userInfo = cookies['user_info'];
+        if(userInfo) {
+            const {username, roles = []} = userInfo;
+            const roleName = capitalize(replace(roles[0].name, 'ROLE_', ''));
+            if(username && roles) {
+                setUser({username, role: roleName});
+            }
         }
     }, [cookies]);
 
@@ -84,7 +87,7 @@ const Header = () => {
                                                  src={'images/dat-tran.jpg'}
                                                  alt="Dat Tran"/>
                                             <div className="absolute bottom-0 right-0">
-                                                <div className="rounded-full w-2 h-2 bg-green-500"/>
+                                                <div className="rounded-full w-2 h-2 bg-green-500 ring-2 ring-white"/>
                                             </div>
                                         </button>
                                         {isShowAvatarDropdown && (
@@ -131,16 +134,18 @@ const Header = () => {
                             if (value._tag === 'NavItem') {
                                 return (
                                     <NavItem key={index}
+                                             id={index}
                                              name={value.name}
                                              to={value.to}/>
                                 );
                             }
                             return (
                                 <NavDropdown key={index}
+                                             id={index}
                                              name={value.name}
                                              to={value.to}
                                              icon={value.icon}
-                                             childen={value._children}/>
+                                             children={value._children}/>
                             );
 
                         })}

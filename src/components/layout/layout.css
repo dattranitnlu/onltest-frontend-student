@@ -11,3 +11,9 @@ nav {
     top: 0;
     right: 2px;
 }
+
+@layer components {
+    .app-container {
+        @apply container min-w-full min-h-screen bg-gray-100 overflow-auto overflow-x-scroll;
+    }
+}

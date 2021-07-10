@@ -4,7 +4,7 @@ import './layout.css';
 
 const Layout = () => {
     return (
-        <div className="container min-w-full min-h-screen bg-gray-100 overflow-auto overflow-x-scroll">
+        <div className="app-container">
             <Header/>
             <Content/>
         </div>
