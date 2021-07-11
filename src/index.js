@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import App from './views/App';
 
 import './assets/css/main.css';
+
 import configStore from "./redux/configStore";
 
 const store = configStore();

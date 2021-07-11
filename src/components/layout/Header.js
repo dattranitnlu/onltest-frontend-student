@@ -19,10 +19,13 @@ const Header = () => {
     const [user, setUser] = useState({username: '', role: ''});
 
     useEffect(() => {
-        const {username, roles = []} = cookies['user_info'];
-        const roleName = capitalize(replace(roles[0].name, 'ROLE_', ''));
-        if(username && roles) {
-            setUser({username, role: roleName});
+        const userInfo = cookies['user_info'];
+        if(userInfo) {
+            const {username, roles = []} = userInfo;
+            const roleName = capitalize(replace(roles[0].name, 'ROLE_', ''));
+            if(username && roles) {
+                setUser({username, role: roleName});
+            }
         }
     }, [cookies]);
 
@@ -34,7 +37,7 @@ const Header = () => {
         <div className="fixed w-full ml-0 mr-0 max-w-full min-w-max">
             <header className="flex bg-white border-b shadow">
                 <div className="container mx-auto">
-                    <div className="flex items-center h-full ml-10 mr-10">
+                    <div className="flex items-center h-full">
                         <Link className="whitespace-nowrap font-bold" to="/">TEST MAKER</Link>
                         <form className="flex items-center ml-14 mr-5">
                             <div className="flex items-center border-b-2 border-purple-600">
@@ -84,7 +87,7 @@ const Header = () => {
                                                  src={'images/dat-tran.jpg'}
                                                  alt="Dat Tran"/>
                                             <div className="absolute bottom-0 right-0">
-                                                <div className="rounded-full w-2 h-2 bg-green-500"/>
+                                                <div className="rounded-full w-2 h-2 bg-green-500 ring-2 ring-white"/>
                                             </div>
                                         </button>
                                         {isShowAvatarDropdown && (
@@ -131,16 +134,18 @@ const Header = () => {
                             if (value._tag === 'NavItem') {
                                 return (
                                     <NavItem key={index}
+                                             id={index}
                                              name={value.name}
                                              to={value.to}/>
                                 );
                             }
                             return (
                                 <NavDropdown key={index}
+                                             id={index}
                                              name={value.name}
                                              to={value.to}
                                              icon={value.icon}
-                                             childen={value._children}/>
+                                             children={value._children}/>
                             );
 
                         })}

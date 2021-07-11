@@ -5,18 +5,22 @@ import routes from "../../router/routes";
 const Content = () => {
     return (
         <>
-            <div className="sm:mx-auto min-w-max mt-44 mb-10 w-full">
-                <Switch>
-                    {routes.map((routeItem, key) => {
-                        return (
-                            <Route key={key}
-                                   path={routeItem.path}
-                                   exact={routeItem.exact}
-                                   name={routeItem.name}
-                                   render={(props) => <routeItem.component {...props}/> }/>
-                        );
-                    })}
-                </Switch>
+            <div className="mt-44 mb-10 w-full max-w-full min-w-max">
+                <div className="flex">
+                    <div className="container mx-auto">
+                        <Switch>
+                            {routes.map((routeItem, key) => {
+                                return (
+                                    <Route key={key}
+                                           path={routeItem.path}
+                                           exact={routeItem.exact}
+                                           name={routeItem.name}
+                                           render={(props) => <routeItem.component {...props}/> }/>
+                                );
+                            })}
+                        </Switch>
+                    </div>
+                </div>
             </div>
         </>
     );

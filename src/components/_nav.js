@@ -1,16 +1,17 @@
 import bxChevronDown from "@iconify/icons-bx/bx-chevron-down";
 
+import {RootPath} from '../router/routes';
+
 const nav = [
-    // {
-    //     _tag: 'NavItem',
-    //     name: 'LOGIN',
-    //     to: '/login',
-    //     icon: bxChevronDown
-    // },
+    {
+        _tag: 'NavItem',
+        name: 'List Exams',
+        to: RootPath.LIST_EXAMS
+    },
     {
         _tag: 'NavItem',
         name: 'Exam Detail Page',
-        to: '/exam-details'
+        to: RootPath.EXAM_DETAILS
     },
     {
         _tag: 'NavDropdown',
@@ -21,12 +22,12 @@ const nav = [
             {
                 _tag: 'NavItem',
                 name: 'Page 404',
-                to: '/404',
+                to: RootPath.PAGE_404,
             },
             {
                 _tag: 'NavItem',
                 name: 'Page 500',
-                to: '/500',
+                to: RootPath.PAGE_500,
             }
         ]
     }

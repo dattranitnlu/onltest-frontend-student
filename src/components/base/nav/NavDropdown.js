@@ -10,13 +10,15 @@ const NavDropdown = (props) => {
         id,
         name,
         to,
-        icon,
+        icon = undefined,
         children
-    } = props;
+    } = props
 
     const [isShow, setShow] = useState(false);
 
-    const handleClickShowDropdown = () => setShow(!isShow);
+    const handleClickShowDropdown = () => {
+        setShow(!isShow);
+    }
 
     return (
         <>
@@ -35,7 +37,7 @@ const NavDropdown = (props) => {
                         </Link>
                     </div>
 
-                    {isShow && children != null && (
+                    {isShow && children && (
                         <div
                             className="origin-top-right absolute left-0 mt-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                             role="menu"
@@ -47,17 +49,20 @@ const NavDropdown = (props) => {
                                     if (value._tag === 'NavItem') {
                                         return (
                                             <NavItem key={index}
+                                                     id={index}
                                                      name={value.name}
                                                      to={value.to}/>
                                         );
                                     }
                                     return (
                                         <NavDropdown key={index}
+                                                     id={index}
                                                      name={value.name}
                                                      to={value.to}
                                                      icon={value.icon}
-                                                     childen={value._children}/>
+                                                     children={value._children}/>
                                     );
+
                                 })}
                             </div>
                         </div>

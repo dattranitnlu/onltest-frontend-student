@@ -3,18 +3,13 @@ import Icon from "@iconify/react";
 import PropTypes from "prop-types";
 
 const NavItem = (props) => {
-    const {
-        id,
-        name,
-        to,
-        icon = undefined
-    } = props;
+    const {id, name, to, icon = undefined} = props;
 
     return (
         <li id={id}>
             <div className="relative inline-block text-left">
                 <div>
-                    <Link id={id}
+                    <Link
                         className="flex items-center h-10 leading-10 px-4 rounded no-underline hover:no-underline transition-colors duration-100 mx-1 hover:text-purple-600"
                         to={to}>
                         <span>{name}</span>
