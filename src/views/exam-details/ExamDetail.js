@@ -8,15 +8,15 @@ const ExamDetail = () => {
     const {time, subject, questions} = ExamDetailData;
 
     return (
-        <div className="flex justify-center flex-row flex-no-wrap grid-cols-2 gap-x-3">
-            <section className="sm:w-full md:w-2/3 bg-gray-50 border-none shadow-lg rounded-lg py-6 space-y-4">
+        <div className="flex justify-content-between flex-row flex-no-wrap grid-cols-2 gap-x-3">
+            <section className="sm:w-full bg-gray-50 border-none shadow-lg rounded-lg py-6 space-y-4">
                 {questions.map(question => <QuestionCard key={question.id}
                                                          question={question}
                                                          options={question.options}
                                                          answerSheet={question.answerSheet}/>
                 )}
             </section>
-            <section className="bg-gray-50 border-none shadow-lg rounded-lg py-3 space-y-4">
+            <section className="bg-gray-50 md:w-1/3 border-none shadow-lg rounded-lg py-3 space-y-4">
                 <div className="text-center text-2xl mx-8 divide-y-2">
                     <span>{subject.courseName}</span>
                 </div>

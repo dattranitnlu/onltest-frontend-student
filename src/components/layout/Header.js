@@ -37,7 +37,7 @@ const Header = () => {
         <div className="fixed w-full ml-0 mr-0 max-w-full min-w-max">
             <header className="flex bg-white border-b shadow">
                 <div className="container mx-auto">
-                    <div className="flex items-center h-full ml-10 mr-10">
+                    <div className="flex items-center h-full">
                         <Link className="whitespace-nowrap font-bold" to="/">TEST MAKER</Link>
                         <form className="flex items-center ml-14 mr-5">
                             <div className="flex items-center border-b-2 border-purple-600">
