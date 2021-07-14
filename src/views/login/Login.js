@@ -23,6 +23,8 @@ const Login = () => {
     useEffect(() => {
         if (isLoggedIn) {
             setRedirectToReferrer(true);
+        } else {
+            setRedirectToReferrer(false);
         }
     }, [isLoggedIn]);
 

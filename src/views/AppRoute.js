@@ -1,10 +1,12 @@
-import {useEffect, useState, Suspense } from "react";
-import {withRouter, Route, Switch} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import React, {Suspense, useEffect, useState} from "react";
+import {withRouter, Switch, BrowserRouter} from "react-router-dom";
 
 import PrivateRoute from "../router/private.router";
 import {Layout} from "../components/layout";
 import Login from "./login";
+import PublicRoute from "../router/public.router";
+import {RootPath} from "../router/routes";
+import {useDispatch, useSelector} from "react-redux";
 import {checkAuthorization} from "../redux/user/actions/auth.actions";
 
 const AppRoute = () => {
@@ -14,24 +16,21 @@ const AppRoute = () => {
 
     useEffect(() => {
         dispatch(checkAuthorization());
-        if(token) {
+        if (token) {
             setLoggedIn(true);
-        } else {
-            setLoggedIn(false);
         }
-    }, [dispatch, isLoggedIn, token]);
+    }, [dispatch, isLoggedIn, token])
 
     return (
-        <Suspense fallback={null}>
-            <Switch>
-                <Route path={`/login`}
-                       component={props => <Login {...props}/>} />
-                <PrivateRoute path={`/`}
-                              isAuthenticated={isLoggedIn}
-                              component={props => <Layout {...props}/>}/>
-            </Switch>
-        </Suspense>
+        <BrowserRouter>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Switch>
+                    <PublicRoute path={RootPath.PAGE_LOGIN} component={Login}/>
+                    <PrivateRoute path={`/`} component={Layout}/>
+                </Switch>
+            </Suspense>
+        </BrowserRouter>
     );
-};
+}
 
 export default withRouter(AppRoute);

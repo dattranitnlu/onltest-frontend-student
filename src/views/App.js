@@ -1,17 +1,15 @@
-import {Route, Switch} from 'react-router-dom';
-import Boot from '../redux/boot';
-import AppProvider from "./AppProvider";
+import {Router} from "react-router-dom";
+import { createBrowserHistory } from 'history';
 import AppRoute from "./AppRoute";
+import Boot from '../redux/boot';
+
+const history = createBrowserHistory();
 
 const App = () => {
     return (
-        <AppProvider>
-            <Switch>
-                <Route path="/">
-                    <AppRoute/>
-                </Route>
-            </Switch>
-        </AppProvider>
+        <Router history={history}>
+            <AppRoute/>
+        </Router>
     );
 };
 

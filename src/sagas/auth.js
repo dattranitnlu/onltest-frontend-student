@@ -69,7 +69,7 @@ function* logout() {
     yield put({
         type: actions.LOGOUT_SUCCEEDED
     });
-    yield history.push('/');
+    yield call(history.push, '/');
 }
 
 export default function* authSaga() {
