@@ -8,6 +8,7 @@ import PublicRoute from "../router/public.router";
 import {RootPath} from "../router/routes";
 import {useDispatch, useSelector} from "react-redux";
 import {checkAuthorization} from "../redux/user/actions/auth.actions";
+import {HashSpinner} from "../components/base/spinners";
 
 const AppRoute = () => {
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const AppRoute = () => {
 
     return (
         <BrowserRouter>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<HashSpinner isLoading={true} size={75}/>}>
                 <Switch>
                     <PublicRoute path={RootPath.PAGE_LOGIN} component={Login}/>
                     <PrivateRoute path={`/`} component={Layout}/>

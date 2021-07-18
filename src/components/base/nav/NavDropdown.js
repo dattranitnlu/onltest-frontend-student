@@ -24,18 +24,16 @@ const NavDropdown = (props) => {
         <>
             <li id={id}>
                 <div className="relative inline-block text-left">
-                    <div>
-                        <Link
-                            className="flex items-center h-10 leading-10 px-4 rounded cursor-pointer no-underline hover:no-underline duration-100 mx-1 hover:text-purple-600"
-                            id="menu-button"
-                            aria-expanded="true"
-                            aria-haspopup="true"
-                            onClick={handleClickShowDropdown}
-                            to={to}>
-                            {name}
-                            <Icon icon={icon}/>
-                        </Link>
-                    </div>
+                    <Link
+                        className="flex items-center hover:bg-gray-100 h-10 px-4 rounded duration-100 mx-1 hover:text-purple-600"
+                        id="menu-button"
+                        aria-expanded="true"
+                        aria-haspopup="true"
+                        onClick={handleClickShowDropdown}
+                        to={to}>
+                        {name}
+                        <Icon icon={icon}/>
+                    </Link>
 
                     {isShow && children && (
                         <div

@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 
 const QuoteCard = () => {
     return (
-        <div className="sm:w-full bg-white rounded-xl shadow-lg overflow-hidden sm:max-w-full">
+        <div className="sm:w-full bg-white rounded-lg shadow-lg overflow-hidden sm:max-w-full">
             <div className="flex">
                 <div className="md:flex-shrink-0">
                     <img className="h-48 w-full object-cover md:w-48"
