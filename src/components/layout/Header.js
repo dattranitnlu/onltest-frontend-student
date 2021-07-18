@@ -129,7 +129,7 @@ const Header = () => {
 
             <nav className="block bg-white border-b shadow">
                 <div className="flex justify-center container mx-auto max-w-6xl min-w-max h-full">
-                    <ul className="flex items-center text-sm text-gray-400 pl-0 mb-0 list-none space-x-4">
+                    <ul className="flex items-center text-base text-gray-700 pl-0 mb-0 list-none space-x-4">
                         {nav.map((value, index) => {
                             if (value._tag === 'NavItem') {
                                 return (

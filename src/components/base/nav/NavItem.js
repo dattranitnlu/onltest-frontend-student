@@ -6,16 +6,14 @@ const NavItem = (props) => {
     const {id, name, to, icon = undefined} = props;
 
     return (
-        <li id={id}>
+        <li id={id} className="hover:bg-gray-100 px-4 rounded transition-colors duration-100 mx-1">
             <div className="relative inline-block text-left">
-                <div>
-                    <Link
-                        className="flex items-center h-10 leading-10 px-4 rounded no-underline hover:no-underline transition-colors duration-100 mx-1 hover:text-purple-600"
-                        to={to}>
-                        <span>{name}</span>
-                        <Icon icon={icon}/>
-                    </Link>
-                </div>
+                <Link
+                    className="flex items-center h-10"
+                    to={to}>
+                    <span className="font-medium hover:text-purple-600">{name}</span>
+                    <Icon icon={icon}/>
+                </Link>
             </div>
         </li>
     );

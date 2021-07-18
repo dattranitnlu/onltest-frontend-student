@@ -1,9 +1,9 @@
 import {HashLoader} from "react-spinners";
 
-const HashSpinner = (isLoading = false, size = 75) => {
+const HashSpinner = ({isLoading = false, size = 75}) => {
     return (
         <div
-            className="container min-h-screen max-w-full flex justify-center bg-gray-100 mx-auto"
+            className="container min-h-screen max-w-full flex justify-center bg-gray-50 mx-auto"
             style={{
                 position: "fixed",
                 background: "#54545487",

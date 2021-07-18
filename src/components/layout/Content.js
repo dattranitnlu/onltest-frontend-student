@@ -5,7 +5,7 @@ import routes from "../../router/routes";
 const Content = () => {
     return (
         <>
-            <div className="mt-44 mb-10 w-full max-w-full min-w-max">
+            <main className="mt-44 mb-10 w-full max-w-full min-w-max">
                 <div className="flex">
                     <div className="container mx-auto">
                         <Switch>
@@ -21,7 +21,7 @@ const Content = () => {
                         </Switch>
                     </div>
                 </div>
-            </div>
+            </main>
         </>
     );
 }
