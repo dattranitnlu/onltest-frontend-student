@@ -5,9 +5,13 @@ import {useDispatch} from "react-redux";
 import {logoutRequest} from "../../redux/user/actions/auth.actions";
 import {replace, capitalize} from 'lodash';
 
-import Icon from '@iconify/react';
-import bxBell from '@iconify/icons-bx/bx-bell';
-import bxSearch from '@iconify/icons-bx/bx-search';
+import {
+    BellIcon,
+    KeyIcon,
+    LogoutIcon,
+    SearchIcon,
+    UserIcon
+} from '@heroicons/react/outline';
 
 import {NavItem, NavDropdown} from "../base/nav";
 import nav from "../_nav";
@@ -20,10 +24,10 @@ const Header = () => {
 
     useEffect(() => {
         const userInfo = cookies['user_info'];
-        if(userInfo) {
+        if (userInfo) {
             const {username, roles = []} = userInfo;
             const roleName = capitalize(replace(roles[0].name, 'ROLE_', ''));
-            if(username && roles) {
+            if (username && roles) {
                 setUser({username, role: roleName});
             }
         }
@@ -41,12 +45,7 @@ const Header = () => {
                         <Link className="whitespace-nowrap font-bold" to="/">TEST MAKER</Link>
                         <form className="flex items-center ml-14 mr-5">
                             <div className="flex items-center border-b-2 border-purple-600">
-                                <Icon className="mx-auto border-none flex items-center"
-                                      icon={bxSearch}
-                                      color="#6E6B7B"
-                                      height="20px"
-                                      width="20px"/>
-
+                                <SearchIcon width="20px" height="20px" color="#6E6B7B"/>
                                 <input
                                     className="outline-none"
                                     type="text"
@@ -59,16 +58,15 @@ const Header = () => {
                             <li className="relative ml-1.5 mr-1.5">
                                 <Link className="block whitespace-nowrap text-purple-800"
                                       to="/">
-                                    <Icon icon={bxBell}
-                                          color="#6E6B7B"
-                                          width="26.4px"
-                                          height="30.168px"/>
-                                    <span className="flex">
+                                    <BellIcon width={'26.4px'}
+                                              height={'30.168px'}
+                                              color={'#6E6B7B'}/>
+                                    <div className="flex">
                                         <span
                                             className="animate-ping absolute top-1 right-1 inline-flex rounded-full w-2 h-2 bg-pink-500"/>
                                         <span
                                             className="absolute top-1 right-1 inline-flex rounded-full w-2 h-2 bg-pink-600"/>
-                                    </span>
+                                    </div>
                                 </Link>
                             </li>
                             <li className="relative">
@@ -98,24 +96,30 @@ const Header = () => {
                                                 aria-labelledby="menu-button"
                                                 tabIndex="-1">
                                                 <div className="py-1" role="none">
-                                                    <Link className="text-gray-700 block px-4 py-2 text-sm"
+                                                    <Link className="nav-animation"
                                                           role="menuitem"
-                                                          tabIndex="-1"
                                                           id="menu-item-0"
-                                                          to="/">Edit Profile</Link>
-                                                    <Link className="text-gray-700 block px-4 py-2 text-sm"
+                                                          to="/">
+                                                        <UserIcon className="h-5 w-5"/>
+                                                        <span>Edit Profile</span>
+                                                    </Link>
+                                                    <Link className="nav-animation"
                                                           role="menuitem"
-                                                          tabIndex="-1"
                                                           id="menu-item-1"
-                                                          to="/">Change
-                                                        Password</Link>
+                                                          to="/">
+                                                        <KeyIcon className="h-5 w-5"/>
+                                                        <span>Change Password</span>
+                                                    </Link>
                                                 </div>
                                                 <div className="py-1" role="none">
-                                                    <button className="text-gray-700 block px-4 py-2 text-sm focus:outline-none"
+                                                    <Link className="nav-animation"
                                                           role="menuitem"
-                                                          tabIndex="-1"
                                                           id="menu-item-3"
-                                                          onClick={handleLogout}>Logout</button>
+                                                          to={'/'}
+                                                          onClick={handleLogout}>
+                                                        <LogoutIcon className="h-5 w-5"/>
+                                                        <span>Logout</span>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         )}
