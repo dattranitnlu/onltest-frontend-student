@@ -16,4 +16,8 @@ nav {
     .app-container {
         @apply container min-w-full min-h-screen bg-gray-100 overflow-auto overflow-x-scroll;
     }
+
+    .nav-animation {
+        @apply flex items-center text-gray-700 hover:text-purple-600 block py-2 font-medium hover:bg-gray-100 px-4 rounded transition-colors mx-1 space-x-1.5;
+    }
 }

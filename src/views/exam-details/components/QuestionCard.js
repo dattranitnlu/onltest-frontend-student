@@ -15,7 +15,6 @@ const QuestionCard = props => {
 
     const getCheckedAttribute = (option) => {
         const findOption = answerSheet.find(chosen => chosen.chosenAnswer === option.optionContent);
-
         return findOption !== undefined;
     }
 

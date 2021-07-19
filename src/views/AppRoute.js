@@ -12,7 +12,7 @@ import {HashSpinner} from "../components/base/spinners";
 
 const AppRoute = () => {
     const dispatch = useDispatch();
-    const token = useSelector(state => state?.auth.token);
+    const token = useSelector(state => state?.auth.token)
     const [isLoggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const AppRoute = () => {
 
     return (
         <BrowserRouter>
-            <Suspense fallback={<HashSpinner isLoading={true} size={75}/>}>
+            <Suspense fallback={<HashSpinner/>}>
                 <Switch>
                     <PublicRoute path={RootPath.PAGE_LOGIN} component={Login}/>
                     <PrivateRoute path={`/`} component={Layout}/>
