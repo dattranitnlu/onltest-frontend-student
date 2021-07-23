@@ -2,10 +2,10 @@ import {Link} from "react-router-dom";
 
 const QuoteCard = () => {
     return (
-        <div className="sm:w-full bg-white rounded-lg shadow-lg overflow-hidden sm:max-w-full">
-            <div className="flex">
+        <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden md:max-w-full">
+            <div className="md:flex">
                 <div className="md:flex-shrink-0">
-                    <img className="h-48 w-full object-cover md:w-48"
+                    <img className="h-48 w-full object-cover md:h-full md:w-48"
                          src="https://images.unsplash.com/photo-1515711660811-48832a4c6f69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80"
                          alt="Man looking at item at a store"/>
                 </div>

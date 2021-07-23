@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import {CheckIcon} from "@heroicons/react/solid";
 
 const Option = props => {
     const {
@@ -20,15 +21,9 @@ const Option = props => {
 
     const isShowCorrectAnswer = (correct) => {
         return (correct &&
-            <img src={'images/green-tick.svg'}
-                 style={
-                     {
-                         color: '#28C76F',
-                         width: '20px',
-                         height: '20px'
-                     }
-                 }
-                 alt={'Correct'}/>
+            <CheckIcon color={'#28C76F'}
+                       width={'25px'}
+                       height={'25px'}/>
         );
     }
 

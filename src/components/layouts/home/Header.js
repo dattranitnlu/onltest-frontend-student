@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {useCookies} from "react-cookie";
 import {useDispatch} from "react-redux";
-import {logoutRequest} from "../../redux/user/actions/auth.actions";
+import {logoutRequest} from "../../../redux/user/actions/auth.actions";
 import {replace, capitalize} from 'lodash';
 
 import {
@@ -13,8 +13,8 @@ import {
     UserIcon
 } from '@heroicons/react/outline';
 
-import {NavItem, NavDropdown} from "../base/nav";
-import nav from "../_nav";
+import {NavItem, NavDropdown} from "../../base/nav";
+import nav from "../../_nav";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -58,9 +58,7 @@ const Header = () => {
                             <li className="relative ml-1.5 mr-1.5">
                                 <Link className="block whitespace-nowrap text-purple-800"
                                       to="/">
-                                    <BellIcon width={'26.4px'}
-                                              height={'30.168px'}
-                                              color={'#6E6B7B'}/>
+                                    <BellIcon width={'26.4px'} height={'30.168px'} color={'#6E6B7B'}/>
                                     <div className="flex">
                                         <span
                                             className="animate-ping absolute top-1 right-1 inline-flex rounded-full w-2 h-2 bg-pink-500"/>
@@ -91,11 +89,8 @@ const Header = () => {
                                         {isShowAvatarDropdown && (
                                             <div
                                                 className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
-                                                role="menu"
-                                                aria-orientation="vertical"
-                                                aria-labelledby="menu-button"
-                                                tabIndex="-1">
-                                                <div className="py-1" role="none">
+                                            >
+                                                <div className="py-1">
                                                     <Link className="nav-animation"
                                                           role="menuitem"
                                                           id="menu-item-0"
@@ -111,10 +106,10 @@ const Header = () => {
                                                         <span>Change Password</span>
                                                     </Link>
                                                 </div>
-                                                <div className="py-1" role="none">
+                                                <div className="py-1">
                                                     <Link className="nav-animation"
                                                           role="menuitem"
-                                                          id="menu-item-3"
+                                                          id="menu-item-2"
                                                           to={'/'}
                                                           onClick={handleLogout}>
                                                         <LogoutIcon className="h-5 w-5"/>
@@ -140,7 +135,8 @@ const Header = () => {
                                     <NavItem key={index}
                                              id={index}
                                              name={value.name}
-                                             to={value.to}/>
+                                             to={value.to}
+                                             icon={value.icon}/>
                                 );
                             }
                             return (

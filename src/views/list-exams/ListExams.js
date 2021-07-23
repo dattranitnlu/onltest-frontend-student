@@ -1,5 +1,5 @@
 import {QuoteCard} from "../../components/base/cards";
-import {MyListBox} from "../../components/base/Selects";
+import {MyListBox} from "../../components/base/selects";
 
 const ListExams = () => {
     return (

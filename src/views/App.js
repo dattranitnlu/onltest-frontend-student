@@ -1,5 +1,5 @@
 import {Router} from "react-router-dom";
-import { createBrowserHistory } from 'history';
+import {createBrowserHistory} from 'history';
 import AppRoute from "./AppRoute";
 import Boot from '../redux/boot';
 
