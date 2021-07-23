@@ -1,18 +1,15 @@
 import {Link} from "react-router-dom";
-import Icon from "@iconify/react";
 import PropTypes from "prop-types";
 
-const NavItem = (props) => {
-    const {id, name, to, icon = undefined} = props;
-
+const NavItem = ({id, name, to, icon}) => {
     return (
         <li id={id} className="hover:bg-gray-100 px-4 rounded transition-colors duration-100 mx-1">
             <div className="relative inline-block text-left">
                 <Link
-                    className="flex items-center h-10"
+                    className="flex items-center h-10 space-x-1"
                     to={to}>
-                    <span className="font-medium hover:text-purple-600">{name}</span>
-                    <Icon icon={icon}/>
+                    {icon}
+                    <span className="hover:text-purple-600">{name}</span>
                 </Link>
             </div>
         </li>

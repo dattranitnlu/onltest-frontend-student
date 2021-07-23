@@ -2,7 +2,7 @@ import Header from "./Header";
 import Content from "./Content";
 import './layout.css';
 
-const Layout = () => {
+const HomeLayout = () => {
     return (
         <div className="app-container">
             <Header/>
@@ -11,4 +11,4 @@ const Layout = () => {
     );
 }
 
-export default Layout;
+export default HomeLayout;
