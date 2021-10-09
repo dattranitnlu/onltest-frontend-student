@@ -18,7 +18,6 @@ import nav from "../../_nav";
 
 const Header = () => {
     const dispatch = useDispatch();
-    const [isShowAvatarDropdown, setShowAvatarDropdown] = useState(false);
     const [cookies] = useCookies(['user_info']);
     const [user, setUser] = useState({username: '', role: ''});
 
@@ -33,12 +32,10 @@ const Header = () => {
         }
     }, [cookies]);
 
-    const handleClickAvatar = () => setShowAvatarDropdown(!isShowAvatarDropdown);
-
     const handleLogout = () => dispatch(logoutRequest());
 
     return (
-        <div className="fixed w-full ml-0 mr-0 max-w-full min-w-max">
+        <div className="fixed w-full ml-0 mr-0 max-w-full min-w-max z-10">
             <header className="navbar shadow-lg bg-white px-8">
                 <div className="flex-none">
                     <span className="text-lg font-bold">Test Maker</span>
@@ -49,11 +46,29 @@ const Header = () => {
                            className="input input-sm input-primary input-bordered"/>
                 </div>
                 <div className="flex-none">
+                    <Link className="mx-6 dropdown dropdown-end">
+                        <BellIcon className="inline-block w-6 h-6 stroke-current" width={'26.4px'} height={'30.168px'}
+                                  color={'#6E6B7B'}/>
+                        <ul tabIndex="0" className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
+                            <li>
+                                <Link to={"#"}>Item 1</Link>
+                            </li>
+                            <li>
+                                <Link to={"#"}>Item 2</Link>
+                            </li>
+                            <li>
+                                <Link to={"#"}>Item 3</Link>
+                            </li>
+                        </ul>
+                    </Link>
+
+                </div>
+                <div className="flex-none">
                     <Link className="avatar dropdown dropdown-end">
                         <div className="rounded-full w-10 h-10 m-1">
                             <img src={'images/dat-tran.jpg'} alt="Dat Tran"/>
                         </div>
-                        <ul tabIndex="0" className="p-2 shadow menu dropdown-content bg-base-100 rounded-md w-52">
+                        <ul className="p-1 shadow menu dropdown-content bg-white rounded-md w-52">
                             <li>
                                 <Link className="nav-animation" to={'/'}>
                                     <UserIcon className="h-5 w-5"/>
@@ -61,10 +76,16 @@ const Header = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link>Item 2</Link>
+                                <Link className="nav-animation" to={'/'}>
+                                    <KeyIcon className="h-5 w-5"/>
+                                    <span>Change Password</span>
+                                </Link>
                             </li>
                             <li>
-                                <Link>Item 3</Link>
+                                <Link className="nav-animation" to={'/'} onClick={handleLogout}>
+                                    <LogoutIcon className="h-5 w-5"/>
+                                    <span>Logout</span>
+                                </Link>
                             </li>
                         </ul>
                     </Link>
