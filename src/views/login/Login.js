@@ -81,7 +81,7 @@ const Login = () => {
                         <div className="form-group">
                             <button
                                 className="flex items-center justify-center space-x-2 bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 btn"
-                                type="button">
+                                type="submit">
                                 {loading && (
                                     <FontAwesomeIcon className="animate-spin text-2xl"
                                                      icon={faSpinner}/>
