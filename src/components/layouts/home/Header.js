@@ -9,7 +9,6 @@ import {
     BellIcon,
     KeyIcon,
     LogoutIcon,
-    SearchIcon,
     UserIcon
 } from '@heroicons/react/outline';
 
@@ -35,8 +34,8 @@ const Header = () => {
     const handleLogout = () => dispatch(logoutRequest());
 
     return (
-        <div className="fixed w-full ml-0 mr-0 max-w-full min-w-max z-10">
-            <header className="navbar shadow-lg bg-white px-8">
+        <div className="fixed w-full ml-0 mr-0 max-w-full min-w-max z-10 space-y-2">
+            <div className="navbar shadow-lg bg-white px-8">
                 <div className="flex-none">
                     <span className="text-lg font-bold">Test Maker</span>
                 </div>
@@ -46,10 +45,10 @@ const Header = () => {
                            className="input input-sm input-primary input-bordered"/>
                 </div>
                 <div className="flex-none">
-                    <Link className="mx-6 dropdown dropdown-end">
-                        <BellIcon className="inline-block w-6 h-6 stroke-current" width={'26.4px'} height={'30.168px'}
+                    <button className="btn btn-square btn-ghost mx-6 dropdown dropdown-end m-0">
+                        <BellIcon className="inline-block w-6 h-6 stroke-current m-1" width={'26.4px'} height={'30.168px'}
                                   color={'#6E6B7B'}/>
-                        <ul tabIndex="0" className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
+                        <ul tabIndex="0" className="p-2 shadow menu dropdown-content bg-base-100 rounded-md w-52">
                             <li>
                                 <Link to={"#"}>Item 1</Link>
                             </li>
@@ -60,10 +59,15 @@ const Header = () => {
                                 <Link to={"#"}>Item 3</Link>
                             </li>
                         </ul>
-                    </Link>
-
+                    </button>
                 </div>
-                <div className="flex-none">
+                <div className="flex-none space-x-2">
+                    <div>
+                        <span className="whitespace-nowrap">{user.username}</span>
+                        <div className="flex items-center justify-end space-x-1.5">
+                            <span>{user.role}</span>
+                        </div>
+                    </div>
                     <Link className="avatar dropdown dropdown-end">
                         <div className="rounded-full w-10 h-10 m-1">
                             <img src={'images/dat-tran.jpg'} alt="Dat Tran"/>
@@ -90,11 +94,11 @@ const Header = () => {
                         </ul>
                     </Link>
                 </div>
-            </header>
+            </div>
 
-            <nav className="block bg-white border-b shadow">
-                <div className="flex justify-center container mx-auto max-w-6xl min-w-max h-full">
-                    <ul className="flex items-center text-base text-gray-700 pl-0 mb-0 list-none space-x-4">
+            <nav className="navbar bg-gray-50 md:mx-8 shadow mb-2 md:rounded-box">
+                <div className="md:flex hidden mx-auto md:navbar-center p-0">
+                    <ul className="flex items-stretch text-base text-gray-700 pl-0 list-none space-x-2">
                         {nav.map((value, index) => {
                             if (value._tag === 'NavItem') {
                                 return (
@@ -117,6 +121,15 @@ const Header = () => {
                         })}
 
                     </ul>
+                </div>
+                <div className="md:flex md:hidden">
+                    <button className="btn btn-square btn-ghost m-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             className="inline-block w-6 h-6 stroke-current">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                  d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
                 </div>
             </nav>
         </div>

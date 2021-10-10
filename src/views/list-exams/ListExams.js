@@ -11,7 +11,24 @@ const ListExams = () => {
                         SEARCH
                     </div>
                     <div className="collapse-content">
-                        <MyListBox label={'Subject'}/>
+                        {/*<MyListBox label={'Subject'}/>*/}
+                        {/*    <select className="select select-bordered select-sm select-primary w-full max-w-xs">*/}
+                        {/*        <option disabled="" selected="">Choose your superpower</option>*/}
+                        {/*        <option>telekinesis</option>*/}
+                        {/*        <option>time travel</option>*/}
+                        {/*        <option>invisibility</option>*/}
+                        {/*    </select>*/}
+                        <div>
+                            <label className="label">
+                                <span className="label-text">Choose your superpower</span>
+                            </label>
+                            <select className="select select-bordered select-primary w-full max-w-xs">
+                                <option disabled="" selected="">Choose your superpower</option>
+                                <option>telekinesis</option>
+                                <option>time travel</option>
+                                <option>invisibility</option>
+                            </select>
+                        </div>
                     </div>
                 </section>
                 <section>
