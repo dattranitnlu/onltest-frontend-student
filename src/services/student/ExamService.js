@@ -1,14 +1,13 @@
-import {GeneralService} from "../GeneralService";
+import GeneralService from "../GeneralService";
 import {RootAPI} from "../../config/api.config";
 
-export const ExamService = {
-    listExams(studentId) {
-        return GeneralService.get(`${RootAPI.STUDENT}/${studentId}/list`);
-    },
-    getExamDetail(studentId, examId) {
-        return GeneralService.get(`${RootAPI.STUDENT}/${studentId}`, {examId: examId});
-    },
-    saveExamDetail(studentId, examId) {
-        return GeneralService.post(`${RootAPI.STUDENT}/${studentId}`, {examId: examId})
-    }
+export const listExamsOfStudent = ({page = 0, size = 25, query = 'on-going'}) => {
+    let params = {};
+    if(page) params = {...params, page: page};
+    if(size) params = {...params, size: size };
+    if(query) params = {...params, query: query.trim()};
+
+    console.log('there...')
+
+    return GeneralService.get(`${RootAPI.STUDENT}/tests`, {params: params});
 }
