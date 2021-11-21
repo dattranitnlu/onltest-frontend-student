@@ -1,22 +1,33 @@
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
+import NavItem from "../nav/NavItem";
+import dateFormat from "dateformat";
 
-const ExamCard = () => {
+const ExamCard = ({id, title, endDate, duration, avatar = 'https://picsum.photos/id/1005/400/250'}) => {
+
     return (<>
-        <div className="card lg:card-side bordered bg-gray-50 shadow-lg">
+        <div id={id} className="card lg:card-side bordered bg-gray-50 shadow-lg">
             <figure>
-                <img className="h-full" src="https://picsum.photos/id/1005/400/250"/>
+                <img className="h-full" src={avatar}/>
             </figure>
             <div className="card-body">
-                <h2 className="card-title">Algebra A3</h2>
-                <p>Rerum reiciendis beatae tenetur excepturi aut pariatur est eos. Sit sit necessitatibus veritatis sed
-                    molestiae voluptates incidunt iure sapiente.</p>
+                <h2 className="card-title">{title}</h2>
+                <p>Due to: {dateFormat(endDate, 'dd/mm/yyyy HH:MM TT')}</p>
+                <p>Duration: {duration} mins</p>
                 <div className="card-actions">
-                    <Link className="btn btn-primary shadow-lg" to={'/exam-details'}>Get Started</Link>
-                    <button className="btn btn-block shadow-lg">More info</button>
+                    <Link className="btn btn-primary mx-0" to={'/exam-details'}>Get Started</Link>
                 </div>
             </div>
         </div>
     </>);
+}
+
+NavItem.propTypes = {
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    title: PropTypes.string,
+    endDate: PropTypes.instanceOf(Date),
+    duration: PropTypes.number,
+    avatar: PropTypes.element
 }
 
 export default ExamCard;

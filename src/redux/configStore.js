@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import rootReducer from "../redux/user/reducers";
 import createSagaMiddleware from "redux-saga";
-import rootSaga from ".././sagas/auth";
+import rootSaga from "../sagas/auth.saga";
 
 const composeEnhancers =
     process.env.NODE_ENV !== "production" &&

@@ -14,5 +14,5 @@ export default baseURL;
 
 export const RootAPI = {
     USER: `${baseURL}/users`,
-    STUDENT: `${baseURL}/student`
+    STUDENT: `${baseURL}/students`
 }

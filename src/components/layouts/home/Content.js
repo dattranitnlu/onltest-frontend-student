@@ -1,12 +1,14 @@
 import {Route, Switch} from 'react-router-dom';
 
 import routes from "../../../router/routes";
+import Breadcrumbs from "../../base/breadcrumbs";
 
 const Content = () => {
     return (
         <>
-            <main className="mt-32 mb-10 w-full">
-                <div className="md:container md:mx-auto">
+            <main className="mt-36 mb-10 w-full">
+                <div className="md:container md:mx-auto sm:mx-8">
+                    <Breadcrumbs />
                     <Switch>
                         {routes.map((routeItem, key) => {
                             return (
