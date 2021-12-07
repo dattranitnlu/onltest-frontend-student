@@ -6,6 +6,6 @@ import examSaga from "./exam.saga";
 export default function* rootSaga() {
     yield all([
         authSaga(),
-        fork(examSaga),
+        examSaga(),
     ]);
 }

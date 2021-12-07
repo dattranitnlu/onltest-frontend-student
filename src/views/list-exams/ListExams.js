@@ -7,9 +7,10 @@ const ListExams = () => {
     const [exams, setExams] = useState([]);
 
     useEffect(() => {
-        listExamsOfStudent({page: 0, size: 25}).then(res => {
-            setExams(res.data.data);
-        });
+        // listExamsOfStudent({page: 0, size: 25}).then(res => {
+        //     setExams(res.data.data);
+        // });
+        listData(1, 25, '');
     }, [])
 
     const listData = (page = 1, size = 25, query = '') => {

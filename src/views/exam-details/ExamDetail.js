@@ -1,19 +1,36 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUndo} from '@fortawesome/free-solid-svg-icons';
 
-import ExamDetailData from "../../components/data/ExamDetailData";
 import {QuestionCard} from "./components";
+import {useEffect, useState} from "react";
+import {listContentTestByTestId} from "../../services/student/ExamService";
+import {useLocation} from "react-router-dom";
+import ExamDetailData from "../../components/data/ExamDetailData";
 
 const ExamDetail = () => {
-    const {time, subject, questions} = ExamDetailData;
+    const {time, subject} = ExamDetailData;
+    const [questionList, setQuestionList] = useState([]);
+    const search = useLocation().search;
+    const testId = new URLSearchParams(search).get('testId');
+
+    useEffect(() => {
+        listContentTestByTestId({testId: testId, page: 0, size: 3 }).then(res => {
+            const result = res.data.data;
+            console.log(res.data)
+            if(result.code === 200) {
+                setQuestionList(result);
+            } else {
+                console.log(result.message);
+            }
+        }).catch(err => console.error(err.message));
+    }, [])
 
     return (
         <div className="flex justify-content-between flex-row flex-no-wrap grid-cols-2 gap-x-3">
             <section className="sm:w-full bg-gray-50 border-none shadow-lg rounded-lg py-6 space-y-4">
-                {questions.map(question => <QuestionCard key={question.id}
+                {questionList.map(question => <QuestionCard key={question.id}
                                                          question={question}
-                                                         options={question.options}
-                                                         answerSheet={question.answerSheet}/>
+                                                         optionList={question.optionList}/>
                 )}
             </section>
             <section className="bg-gray-50 md:w-1/3 border-none shadow-lg rounded-lg py-3 space-y-4">
