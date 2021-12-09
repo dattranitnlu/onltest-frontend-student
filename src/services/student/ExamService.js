@@ -7,6 +7,9 @@ export const listExamsOfStudent = ({page = 0, size = 25, query = 'on-going'}) =>
     if(size) params = {...params, size: size };
     if(query) params = {...params, query: query.trim()};
 
+    console.log(`${RootAPI.STUDENT}/tests`);
+    console.log(params);
+
     return GeneralService.get(`${RootAPI.STUDENT}/tests`, {params: params});
 }
 

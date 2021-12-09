@@ -9,10 +9,11 @@ export const FETCH_EXAM_SUCCEEDED_IN_SELECT_FORM = 'FETCH_EXAM_SUCCEEDED_IN_SELE
 
 // Create Redux action creators that return an action
 export const fetchRequest = (data) => {
-    return ({
+    console.log(data);
+    return {
         type: FETCH_EXAM_REQUEST,
         payload: data
-    })
+    }
 }
 
 export const fetchRequestForSelect = (data) => ({

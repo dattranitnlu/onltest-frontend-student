@@ -1,11 +1,11 @@
-import PropTypes from "prop-types";
-import {Option} from "./index";
 
 const QuestionCard = props => {
     const {
         question,
         optionList,
     } = props;
+    console.log('question card');
+    console.log(question);
 
     return (
         <>
@@ -17,18 +17,18 @@ const QuestionCard = props => {
                     <p>Điểm</p>
                 </div>
             </div>
-            {/*<div className="block ml-5 mr-5 text-left space-y-3">*/}
-            {/*    {optionList.map(option =>*/}
-            {/*        <Option key={option.id}*/}
-            {/*                id={option.id}*/}
-            {/*                questionType={question.questionType}*/}
-            {/*                optionContent={option.optionContent}*/}
-            {/*                question={{id: question.id}}*/}
-            {/*                disabled={true}*/}
-            {/*                correct={option.correct}*/}
-            {/*                checked={true}/>*/}
-            {/*    )}*/}
-            {/*</div>*/}
+            <div className="block ml-5 mr-5 text-left space-y-3">
+                {/* {optionList.map(option =>
+                    <Option key={option.id}
+                        id={option.id}
+                        questionType={question.questionType}
+                        optionContent={option.optionContent}
+                        question={{ id: question.id }}
+                        disabled={true}
+                        correct={option.correct}
+                        checked={true} />
+                )} */}
+            </div>
         </>
     );
 }

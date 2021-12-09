@@ -1,6 +1,7 @@
-import {call, put, takeLatest, take} from 'redux-saga/effects';
-import * as actions from "../redux/user/actions/exam.actions";
-import {listExamsOfStudent} from "../services/student/ExamService";
+import {call, put, takeLatest} from 'redux-saga/effects';
+import * as actions from '../redux/user/actions/exam.actions';
+
+import {listExamsOfStudent} from '../services/student/ExamService';
 
 function* fetchExams({payload}) {
     try {

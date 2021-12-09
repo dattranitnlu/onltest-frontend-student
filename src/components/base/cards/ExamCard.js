@@ -1,4 +1,4 @@
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import PropTypes from "prop-types";
 import NavItem from "../nav/NavItem";
 import dateFormat from "dateformat";
@@ -8,7 +8,6 @@ const ExamCard = ({id, title, endDate, duration, avatar = 'https://picsum.photos
     const history = useHistory();
 
     const handleClickStart = (id) => {
-        console.log(`${RootPath.EXAM_DETAILS}/${id}`)
         history.push(`${RootPath.EXAM_DETAILS}?testId=${id}`);
     }
 

@@ -8,6 +8,7 @@ const initialState = {
     pageInfo: {
         currentPage: 0,
         itemsPerPage: 25,
+        totalElements: 0,
         totalPages: 0
     }
 }
@@ -25,6 +26,7 @@ export default function examReducer(state = initialState, { type, payload }) {
                 loading: true
             };
         case actions.FETCH_EXAM_SUCCEEDED:
+            console.log('OKE ban oi = ', payload);
             return {
                 ...state,
                 loading: false,

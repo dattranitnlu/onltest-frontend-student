@@ -1,24 +1,18 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {ExamCard} from "../../components/base/cards";
-import {useEffect} from "react";
-import {listExamsOfStudent} from "../../services/student/ExamService";
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchRequest} from '../../redux/user/actions/exam.actions';
 
 const ListExams = () => {
-    const [exams, setExams] = useState([]);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        // listExamsOfStudent({page: 0, size: 25}).then(res => {
-        //     setExams(res.data.data);
-        // });
-        listData(1, 25, '');
-    }, [])
+        dispatch(fetchRequest({page: 0, size: 25, query: 'on-going'}));
 
-    const listData = (page = 1, size = 25, query = '') => {
-        page = (page === 0) ? 1 : page;
-        listExamsOfStudent({page: 0, size: 25}).then(res => {
-            setExams(res.data.data);
-        });
-    }
+    }, [dispatch])
+    const data = useSelector(state => state.exam?.data);
+    const pageInfo = useSelector(state => state.exam?.pageInfo);
+    console.log(data);
 
     return (
         <>
@@ -45,7 +39,7 @@ const ListExams = () => {
                 <section>
                     <div className="space-y-3">
                         {
-                            exams.map((value, key) => {
+                            data.map((value, key) => {
                                 return (<ExamCard key={key}
                                                   id={value.id}
                                                   title={value.title}
