@@ -14,7 +14,7 @@ const ExamCard = ({id, title, endDate, duration, avatar = 'https://picsum.photos
     return (<>
         <div id={id} className="card lg:card-side bordered bg-gray-50 shadow-lg">
             <figure>
-                <img className="h-full" src={avatar}/>
+                <img className="h-full" src={avatar} alt="Exam photo sample"/>
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>

@@ -2,10 +2,7 @@
 const QuestionCard = props => {
     const {
         question,
-        optionList,
     } = props;
-    console.log('question card');
-    console.log(question);
 
     return (
         <>

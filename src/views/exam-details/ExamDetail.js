@@ -19,8 +19,10 @@ const ExamDetail = () => {
     const pageInfo = useSelector(state => state?.content?.pageInfo);
 
     useEffect(() => {
-        dispatch(fetchContentRequest({testId, page: 0, size: 1}));
-    }, [dispatch])
+        if(testId) {
+            dispatch(fetchContentRequest({testId, page: 0, size: 1}));
+        }
+    }, [dispatch, testId])
     console.log(data);
 
     return (

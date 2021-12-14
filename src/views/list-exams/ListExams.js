@@ -7,12 +7,13 @@ const ListExams = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchRequest({page: 0, size: 25, query: 'on-going'}));
-
+        dispatch(fetchRequest({page: 0, size: 25, query: 'on-going'})); 
     }, [dispatch])
-    const data = useSelector(state => state.exam?.data);
-    const pageInfo = useSelector(state => state.exam?.pageInfo);
-    console.log(data);
+
+    const data = useSelector(state => state?.exam?.data);
+    const pageInfo = useSelector(state => state?.exam?.pageInfo);
+    
+    console.log(pageInfo);
 
     return (
         <>
