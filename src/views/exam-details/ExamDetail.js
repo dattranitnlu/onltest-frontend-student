@@ -19,18 +19,16 @@ const ExamDetail = () => {
     const pageInfo = useSelector(state => state?.content?.pageInfo);
 
     useEffect(() => {
-        if(testId) {
-            dispatch(fetchContentRequest({testId, page: 0, size: 1}));
-        }
+        dispatch(fetchContentRequest({testId, page: 0, size: 2}));
     }, [dispatch, testId])
     console.log(data);
 
     return (
         <div className="flex justify-content-between flex-row flex-no-wrap grid-cols-2 gap-x-3">
             <section className="sm:w-full bg-gray-50 border-none shadow-lg rounded-lg py-6 space-y-4">
-                {data.map(question => <QuestionCard key={question.id}
-                                                         question={question}
-                                                         optionList={question.optionList}/>
+                {data.map(item => <QuestionCard key={item.id}
+                                                         question={item}
+                                                         optionList={item.question?.optionList}/>
                 )}
 
             </section>

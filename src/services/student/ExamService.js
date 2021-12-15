@@ -13,7 +13,7 @@ export const listExamsOfStudent = ({page, size, query}) => {
 export const listContentTestByTestId = ({testId, page, size}) => {
     let params = {};
     if(page) params = {...params, page: page || 0};
-    if(size) params = {...params, size: size || 3};
+    if(size) params = {...params, size: size || 2};
 
     return GeneralService.get(`${RootAPI.STUDENT}/tests/${testId}`, {params: params});
 }
