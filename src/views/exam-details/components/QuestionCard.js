@@ -1,6 +1,7 @@
 import { Option } from ".";
 const QuestionCard = props => {
     const {
+        testOrder,
         question,
         optionList
     } = props;
@@ -12,7 +13,7 @@ const QuestionCard = props => {
 
                 <div className="flex justify-between ml-5 mr-5">
                     <div>
-                        <span className="font-bold">Cau 1: {question.question.question}</span>
+                        <span className="font-bold">Cau {testOrder}: {question.question.question}</span>
                     </div>
                     {/* <div className="bg-gray-200 text-gray-400 text-center text-sm border shadow-lg rounded-md px-3">
                         <p>Điểm</p>

@@ -6,7 +6,6 @@ export const FETCH_EXAM_REFRESH = 'FETCH_EXAM_REFRESH';
 
 // Create Redux action creators that return an action
 export const fetchRequest = (data) => {
-    console.log('Fetch exams list = ', data);
     return {
         type: FETCH_EXAM_REQUEST,
         payload: data

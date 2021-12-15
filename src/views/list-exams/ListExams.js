@@ -10,10 +10,7 @@ const ListExams = () => {
 
     useEffect(() => {
         dispatch(fetchRequest({page: 0, size: 25, query: 'on-going'})); 
-    }, [dispatch])
-
-    console.log(pageInfo);
-    console.log('list exam = ', data);
+    }, [dispatch, data, pageInfo])
 
     return (
         <>
