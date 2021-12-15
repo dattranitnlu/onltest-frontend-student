@@ -19,7 +19,7 @@ const NavDropdown = ({id, name, to, icon = undefined, children}) => {
                         className="flex items-center hover:bg-gray-100 h-10 px-4 rounded duration-100 mx-1 hover:text-purple-600"
                         id="menu-button"
                         onClick={handleClickShowDropdown}
-                        to={to}>
+                        to={'#'}>
                         <span className="hover:text-purple-600">{name}</span>
                         {icon}
                     </Link>
