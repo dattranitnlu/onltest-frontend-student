@@ -1,6 +1,6 @@
 import * as actions from '../actions/exam.actions';
 
-export const initialState = {
+const initialState = {
     loading: false,
     error: false,
     code: 0,
@@ -20,11 +20,6 @@ export default function examReducer(state = initialState, { type, payload }) {
                 ...state,
                 loading: true
             }
-        case actions.FETCH_EXAM_REQUEST_IN_SELECT_FORM:
-            return {
-                ...state,
-                loading: true
-            }
         case actions.FETCH_EXAM_SUCCEEDED:
             return {
                 ...state,
@@ -32,13 +27,6 @@ export default function examReducer(state = initialState, { type, payload }) {
                 code: payload.code,
                 data: payload.data,
                 pageInfo: payload.pageInfo
-            }
-        case actions.FETCH_EXAM_SUCCEEDED_IN_SELECT_FORM:
-            return {
-                ...state,
-                loading: false,
-                code: payload.code,
-                data: payload.data,
             }
         case actions.FETCH_EXAM_FAILED:
             return {

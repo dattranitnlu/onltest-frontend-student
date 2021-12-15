@@ -5,15 +5,15 @@ import {fetchRequest} from '../../redux/user/actions/exam.actions';
 
 const ListExams = () => {
     const dispatch = useDispatch();
+    const data = useSelector(state => state?.exam?.data);
+    const pageInfo = useSelector(state => state?.exam?.pageInfo);
 
     useEffect(() => {
         dispatch(fetchRequest({page: 0, size: 25, query: 'on-going'})); 
     }, [dispatch])
 
-    const data = useSelector(state => state?.exam?.data);
-    const pageInfo = useSelector(state => state?.exam?.pageInfo);
-    
     console.log(pageInfo);
+    console.log('list exam = ', data);
 
     return (
         <>
