@@ -68,7 +68,7 @@ const Header = () => {
                             <span>{user.role}</span>
                         </div>
                     </div>
-                    <Link className="avatar dropdown dropdown-end">
+                    <button className="avatar dropdown dropdown-end focus:bg-white">
                         <div className="rounded-full w-10 h-10 m-1">
                             <img src={'images/dat-tran.jpg'} alt="Dat Tran"/>
                         </div>
@@ -92,7 +92,7 @@ const Header = () => {
                                 </Link>
                             </li>
                         </ul>
-                    </Link>
+                    </button>
                 </div>
             </div>
 

@@ -1,4 +1,4 @@
-import * as actions from '../actions/exam.actions';
+import * as actions from '../actions/content.actions';
 
 const initialState = {
     loading: false,
@@ -7,39 +7,38 @@ const initialState = {
     data: [],
     pageInfo: {
         currentPage: 0,
-        itemsPerPage: 25,
-        totalElements: 0,
+        itemsPerPage: 3,
         totalPages: 0
     }
 }
 
-export default function examReducer(state = initialState, { type, payload }) {
+export default function contentReducer(state = initialState, { type, payload }) {
     switch (type) {
-        case actions.FETCH_EXAM_REQUEST:
+        case actions.FETCH_CONTENT_EXAM_REQUEST:
             return {
                 ...state,
                 loading: true
-            }
-        case actions.FETCH_EXAM_SUCCEEDED:
+            };
+        case actions.FETCH_CONTENT_EXAM_SUCCEEDED:
             return {
                 ...state,
                 loading: false,
                 code: payload.code,
                 data: payload.data,
                 pageInfo: payload.pageInfo
-            }
-        case actions.FETCH_EXAM_FAILED:
+            };
+
+        case actions.FETCH_CONTENT_EXAM_FAILED:
             return {
                 ...state,
                 loading: false,
                 error: payload.error
-            }
-        case actions.FETCH_EXAM_REFRESH:
+            };
+        case actions.FETCH_CONTENT_EXAM_REFRESH:
             return {
                 ...state,
                 loading: false,
-            }
-
+            };
         default:
             return state;
     }

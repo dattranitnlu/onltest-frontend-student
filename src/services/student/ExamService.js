@@ -1,13 +1,19 @@
 import GeneralService from "../GeneralService";
 import {RootAPI} from "../../config/api.config";
 
-export const listExamsOfStudent = ({page = 0, size = 25, query = 'on-going'}) => {
+export const listExamsOfStudent = ({page, size, query}) => {
     let params = {};
-    if(page) params = {...params, page: page};
-    if(size) params = {...params, size: size };
+    if(page) params = {...params, page: page || 0};
+    if(size) params = {...params, size: size || 25};
     if(query) params = {...params, query: query.trim()};
 
-    console.log('there...')
-
     return GeneralService.get(`${RootAPI.STUDENT}/tests`, {params: params});
+}
+
+export const listContentTestByTestId = ({testId, page, size}) => {
+    let params = {};
+    if(page) params = {...params, page: page || 0};
+    if(size) params = {...params, size: size || 2};
+
+    return GeneralService.get(`${RootAPI.STUDENT}/tests/${testId}`, {params: params});
 }

@@ -1,30 +1,18 @@
 import PropTypes from "prop-types";
-import {CheckIcon} from "@heroicons/react/solid";
 
 const Option = props => {
     const {
         id,
         questionType,
         optionContent,
-        correct,
-        checked,
-        disabled,
         question
     } = props;
 
     const getTypeInput = (type) => {
-        if (type === 'Single Choice')
+        if (type === 'SINGLE_CHOICE')
             return 'radio';
-        if (type === 'Multi Choice')
+        if (type === 'MULTI_CHOICE')
             return 'checkbox';
-    }
-
-    const isShowCorrectAnswer = (correct) => {
-        return (correct &&
-            <CheckIcon color={'#28C76F'}
-                       width={'25px'}
-                       height={'25px'}/>
-        );
     }
 
     return (
@@ -33,11 +21,8 @@ const Option = props => {
                 <input className="form-check-input"
                        type={getTypeInput(questionType)}
                        id={`option-${id}`}
-                       name={`question-${question.id}`}
-                       disabled={disabled}
-                       checked={checked}/>
+                       name={`question-${question.id}`}/>
                 <span>{optionContent}</span>
-                {isShowCorrectAnswer(correct)}
             </div>
         </>
     );

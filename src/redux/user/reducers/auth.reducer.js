@@ -4,7 +4,7 @@ export const initialState = {
     loading: false,
     error: false,
     token: null,
-    user: {}
+    userInfo: {}
 }
 
 export default function authReducer(state = initialState, {type, payload}) {
@@ -43,7 +43,7 @@ export default function authReducer(state = initialState, {type, payload}) {
                 loading: false,
                 error: false,
                 token: null,
-                user: {}
+                userInfo: {}
             };
         case actions.LOGOUT_FAILED:
             return {
@@ -56,12 +56,12 @@ export default function authReducer(state = initialState, {type, payload}) {
                 loading: true,
             };
         case actions.CHECK_AUTHENTICATED_SUCCEEDED:
-            const { token, user } = payload;
+            const { token, userInfo } = payload;
             return {
                 ...state,
                 loading: false,
                 token: token,
-                user: user,
+                userInfo: userInfo,
             };
         case actions.CHECK_AUTHENTICATED_FAILED:
             return {
